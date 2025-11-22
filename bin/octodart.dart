@@ -1,5 +1,10 @@
-import 'package:octodart/octodart.dart' as octodart;
+import 'package:commander_ui/commander_ui.dart';
+import 'package:octodart/views/home/home.dart';
 
-void main(List<String> arguments) {
-  print('Hello world: ${octodart.calculate()}!');
+Future<void> main() async {
+  // 1. Initialize Commander in main
+  final commander = Commander(level: Level.verbose);
+
+  // 2. Call the new function and await its completion
+  await getUserSelection(commander);
 }
