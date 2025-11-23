@@ -1,13 +1,25 @@
 import 'package:commander_ui/commander_ui.dart';
+import 'package:octodart/modules/config/domain/config.dart';
+import 'package:octodart/modules/github/github_repository.dart';
 
-Future<void> getMasonSelection(Commander commander) async {
-  final value = await commander.select(
-    'What is your name ?',
-    onDisplay: (value) => value,
-    placeholder: 'Type to search',
-    defaultValue: 'Charlie',
-    options: ['Alice', 'Bob', 'Charlie', 'David', 'Eve', 'Frank', 'John'],
+Future<void> getMasonSelection(Commander commander, AppConfig config) async {
+  final gitRepo = GithubClientRepository();
+  final bricksList = await gitRepo.listRepoContents(
+    config.github.bricksUrl,
+    token: config.github.authToken,
   );
 
-  print(value);
+  if (bricksList.isNotEmpty) {
+    final value = await commander.select(
+      'Select a brick',
+      onDisplay: (value) => value,
+      placeholder: 'Type to search',
+      defaultValue: bricksList[0],
+      options: bricksList,
+    );
+
+    print(value);
+  } else {
+    print('No bricks found, exiting...');
+  }
 }
