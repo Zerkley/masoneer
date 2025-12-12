@@ -13,7 +13,7 @@ Future<void> getUserSelection(Commander commander, AppConfig config) async {
   switch (value) {
     case 'Mason':
       //move to the mason screen here
-      getMasonSelection(commander);
+      getMasonSelection(commander, config);
       break;
     case 'Android Sign':
       //move to android sign screen
