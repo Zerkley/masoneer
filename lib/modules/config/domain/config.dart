@@ -10,6 +10,10 @@ class GitHubConfig {
       authToken: map['auth_token'] as String? ?? '',
     );
   }
+
+  Map<String, dynamic> toMap() {
+    return {'bricks_url': bricksUrl, 'auth_token': authToken};
+  }
 }
 
 class AppConfig {
@@ -28,5 +32,19 @@ class AppConfig {
         map['github'] as Map<String, dynamic>? ?? {},
       ),
     );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {'github': github.toMap()};
+  }
+
+  /// Returns true if the config is the default or empty configuration.
+  bool get isDefault {
+    final isBricksUrlDefault =
+        github.bricksUrl.isEmpty ||
+        github.bricksUrl == 'https://github.com/default/bricks';
+    final isAuthTokenDefault =
+        github.authToken.isEmpty || github.authToken == 'none';
+    return isBricksUrlDefault && isAuthTokenDefault;
   }
 }
