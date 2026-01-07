@@ -9,12 +9,12 @@ const String appName = 'masoneer';
 /// The name of the TOML configuration file
 const String configFileName = 'config.toml';
 
-/// Default configuration with an example repository structure.
+/// Default configuration with a working example repository.
 final AppConfig defaultAppConfig = AppConfig(
   repos: [
     GitHubRepoConfig(
-      name: 'Example',
-      githubUrl: 'https://github.com/default/bricks',
+      name: 'Very Good Templates',
+      githubUrl: 'https://github.com/VeryGoodOpenSource/very_good_templates',
     ),
   ],
 );

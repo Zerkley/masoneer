@@ -54,7 +54,4 @@ class AppConfig {
       'github': {'repos': repos.map((r) => r.toMap()).toList()},
     };
   }
-
-  /// Returns true if the config has no valid repositories configured.
-  bool get isDefault => repos.isEmpty;
 }

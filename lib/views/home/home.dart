@@ -11,36 +11,17 @@ class HomeScreen extends TuiScreen {
 
   @override
   Future<ScreenAction> run() async {
-    final isMasonConfigured = !config.isDefault;
-    final masonOption = isMasonConfigured
-        ? 'Mason'
-        : 'Mason (Not configured in config file)';
     final value = await commander.select(
       'Select a menu',
       onDisplay: (value) => value,
       defaultValue: 'Mason',
-      options: [masonOption, 'Exit'],
+      options: ['Mason', 'Exit'],
     );
 
     switch (value) {
       case 'Mason':
-        // Check if mason is configured before allowing access
-        if (!isMasonConfigured) {
-          print(
-            '❌ Mason is not configured. Please configure it in your config file first.',
-          );
-          // Stay on the current screen (run again)
-          return ScreenAction.push(this);
-        }
         // PUSH: Go to the Repo Selector screen
         return ScreenAction.push(RepoSelectorScreen(commander, config.repos));
-      case 'Mason (Not configured in config file)':
-        // Block access if mason is not configured
-        print(
-          '❌ Mason is not configured. Please configure it in your config file first.',
-        );
-        // Stay on the current screen (run again)
-        return ScreenAction.push(this);
       case 'Exit':
         // EXIT: Terminate the entire application
         return ScreenAction.exit();
