@@ -2,7 +2,6 @@ import 'package:commander_ui/commander_ui.dart';
 import 'package:masoneer/modules/config/domain/config.dart';
 import 'package:masoneer/routing/custom_router.dart';
 import 'package:masoneer/views/mason/repo_selector.dart';
-import 'package:masoneer/views/android_sign/android_sign.dart';
 
 class HomeScreen extends TuiScreen {
   final Commander commander;
@@ -20,7 +19,7 @@ class HomeScreen extends TuiScreen {
       'Select a menu',
       onDisplay: (value) => value,
       defaultValue: 'Mason',
-      options: [masonOption, 'Android sign', 'Exit'],
+      options: [masonOption, 'Exit'],
     );
 
     switch (value) {
@@ -42,9 +41,6 @@ class HomeScreen extends TuiScreen {
         );
         // Stay on the current screen (run again)
         return ScreenAction.push(this);
-      case 'Android sign':
-        // PUSH: Go to the Android Sign screen and keep HomeScreen on the stack
-        return ScreenAction.push(AndroidSignScreen(commander, config));
       case 'Exit':
         // EXIT: Terminate the entire application
         return ScreenAction.exit();
