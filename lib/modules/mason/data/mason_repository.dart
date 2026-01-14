@@ -37,7 +37,7 @@ class MasonClientRepository implements MasonRepository {
         '--git-url',
         gitUrl,
         '--git-path',
-        'bricks/$brickName',
+        brickName,
       ]);
 
       // Step 3: Generate the brick
