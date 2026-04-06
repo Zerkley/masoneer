@@ -18,3 +18,9 @@ Full Changelog: [1.0.0...1.1.0](https://github.com/Zerkley/masoneer/compare/1.0.
 
 - Add changelog for Dart pub standards
 - Update readme with support link
+
+## 1.1.2
+
+### What's Changed
+
+- Fix missing property in pubspec blocking binary creation
