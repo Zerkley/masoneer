@@ -10,7 +10,6 @@
 - Fix/add api docs by @Zerkley in #9
 - 1.1.0 - Fix stdout error and provide more docs by @Zerkley in #10
 
-Full Changelog: [1.0.0...1.1.0](https://github.com/Zerkley/masoneer/compare/1.0.0...1.1.0)
 
 ## 1.1.1
 
@@ -24,3 +23,10 @@ Full Changelog: [1.0.0...1.1.0](https://github.com/Zerkley/masoneer/compare/1.0.
 ### What's Changed
 
 - Fix missing property in pubspec blocking binary creation
+
+
+## 1.1.3
+
+### What's Changed
+
+- Add unit tests for config reading and routing
