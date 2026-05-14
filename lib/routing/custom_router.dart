@@ -86,6 +86,5 @@ class TuiApp {
           break;
       }
     }
-    print('Application closed.');
   }
 }

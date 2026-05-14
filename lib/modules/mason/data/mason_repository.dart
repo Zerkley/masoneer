@@ -57,19 +57,25 @@ class MasonClientRepository implements MasonRepository {
     }
   }
 
-  /// Runs a Mason command using Process.run.
+  /// Runs a Mason command with inherited stdio so prompts (e.g. `mason make`)
+  /// can use the same terminal as this process.
   ///
   /// [args] The arguments to pass to the mason command
   ///
   /// Throws [MasonException] if the command fails.
   Future<void> _runMasonCommand(List<String> args) async {
-    final result = await Process.run('mason', args, runInShell: true);
-
-    if (result.exitCode != 0) {
+    final process = await Process.start(
+      'mason',
+      args,
+      runInShell: true,
+      mode: ProcessStartMode.inheritStdio,
+    );
+    final exitCode = await process.exitCode;
+    if (exitCode != 0) {
       throw MasonException(
         'Mason command failed: mason ${args.join(' ')}\n'
-        'Exit code: ${result.exitCode}\n'
-        'Stderr: ${result.stderr}',
+        'Exit code: $exitCode\n'
+        '(stdio was inherited; see terminal output above for details.)',
       );
     }
   }
